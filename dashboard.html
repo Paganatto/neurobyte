@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard — NeuroByte</title>
+
+  <!-- TENTA CARREGAR O style.css (mantemos o link original) -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Fallback CSS mínimo embutido: garante que a página MOSTRE algo mesmo se style.css não carregar -->
+  <style>
+    /* reset mínimo */
+    html,body{margin:0;padding:0;height:100%;font-family:Arial,Helvetica,sans-serif;background:#fff;color:#111}
+    .container{width:92%;max-width:1200px;margin:0 auto}
+    .site-header{position:fixed;top:0;left:0;right:0;background:#071427;color:#fff;padding:14px 0;z-index:999}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo-img{width:90px;height:auto}
+    .main-nav a{color:#fff;text-decoration:none;margin-right:12px;font-weight:600}
+    .btn.header-cta{background:#00d2ff;color:#021226;padding:8px 12px;border-radius:8px;text-decoration:none}
+    main{padding-top:110px}
+    .section-title{font-size:28px;margin:18px 0;color:#021226}
+    .dash-card{display:flex;gap:12px;align-items:center;padding:14px;border-radius:10px;background:#f3f7fb;margin-bottom:12px}
+    .dash-icon{font-size:24px}
+    .card{background:#f8fbff;border-radius:10px;padding:16px;margin-bottom:14px}
+    footer{background:#041022;color:#ddd;padding:20px 0;margin-top:30px}
+    .footer-grid{display:flex;gap:24px;flex-wrap:wrap}
+    .copy{margin-top:14px;color:#bfcbd6}
+    /* melhora para imagens quebradas */
+    img{max-width:100%;height:auto;display:block}
+  </style>
+
+  <!-- Font Awesome (opcional, se offline pode dar erro visual mas ok) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="images/logo.png" alt="NeuroByte Logo" class="logo-img" onerror="this.style.display='none'">
+        <span class="brand-name">NeuroByte</span>
+      </div>
+
+      <nav class="main-nav">
+        <a href="index.html">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#funcionalidades">Funcionalidades</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#planos">Planos</a>
+        <a href="#time">Time</a>
+      </nav>
+
+      <a href="#planos" class="btn header-cta">Começar</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="section-title">Dashboard do Projeto</h1>
+
+    <section>
+      <div class="dash-card"><i class="fa fa-video dash-icon"></i>
+        <div><h3>Vídeo</h3><p>Apresente o vídeo do seu trabalho</p></div>
+      </div>
+
+      <div class="dash-card"><i class="fa fa-user-friends dash-icon"></i>
+        <div><h3>Equipe</h3><p>Membros envolvidos</p></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>📹 Vídeo do Trabalho</h2>
+      <div id="video-area">
+        <!-- exemplo de iframe, descomente e substitua o ID -->
+        <!-- <iframe width="100%" height="360" src="https://www.youtube.com/embed/SEU_VIDEO_ID" frameborder="0" allowfullscreen></iframe> -->
+        <p style="color:#333">Coloque aqui o embed do vídeo (YouTube, Vimeo ou vídeo local).</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>📝 Explicação do Trabalho</h2>
+      <p>Resumo do projeto, como funciona, benefícios etc.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <strong>NeuroByte</strong>
+        <p>Transformando negócios com IoT.</p>
+      </div>
+
+      <div>
+        <h4>Links Rápidos</h4>
+        <ul style="margin:0;padding-left:18px">
+          <li><a href="index.html" style="color:#cfefff">Sobre</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contato</h4>
+        <p>contato@neurobyte.com</p>
+      </div>
+    </div>
+
+    <div class="copy">© <span id="year"></span> NeuroByte. Todos os direitos reservados.</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // DEBUG: se style.css falhar, avisa no console
+    (function(){
+      // checa se uma regra esperada do style.css foi aplicada (ex.: cor de fundo do header)
+      var headerBg = getComputedStyle(document.querySelector('.site-header')).backgroundColor;
+      // headerBg provavelmente será 'rgba(7, 20, 39, 0.6)' se seu style.css carregar; caso contrário, será o fallback do inline
+      if(!headerBg || headerBg === 'rgba(0, 0, 0, 0)' || headerBg.indexOf('rgb')===-1){
+        console.warn('Atenção: style.css pode não ter carregado. Verifique o path do arquivo (style.css) e o DevTools -> Network.');
+      }
+    })();
+  </script>
+</body>
+</html>
